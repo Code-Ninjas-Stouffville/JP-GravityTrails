@@ -7,10 +7,11 @@ public class Throwable : MonoBehaviour
     public GameObject objectThrown;
     public Vector3 offset;
     public int throwableCounter;
+    public Throwable direction;
     // Start is called before the first frame update
     void Start()
     {
-        
+        direction = GameObject.FindGameObjectsWithTag("Player").GetComponent<Throwable>();
     }
     void OnCollisionEnter2D (Collision2D collision)
     {
@@ -30,7 +31,8 @@ public class Throwable : MonoBehaviour
             {
                 offset = transform.localScale.x * new Vector3(1, 0, 0);
                 Vector3 throwablePosition = transform.position + offset;
-                Instantiate(objectThrown, throwablePosition, transform.rotation);
+                GameObject ninjaStar = Instantiate(objectThrown, throwablePosition, transform.rotation);
+                ninjaStar.transform.localScale = new Vector3(1.5f, 1.5f, 1f);
                 throwableCounter -= 1;
             }
         }
