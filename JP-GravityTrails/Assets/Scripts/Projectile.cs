@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    public float speed;
     public Throwable direction;
+    public float speed;
     // Start is called before the first frame update
     void Start()
     {
-        direction = gameObject.FindGameObjectsWithTag("Player").GetComponent<Throwable>();
+        direction = GameObject .FindGameObjectWithTag("Player").GetComponent<Throwable>();
     }
     // Update is called once per frame
     void Update()

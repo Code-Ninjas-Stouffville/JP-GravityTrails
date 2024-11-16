@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyCollider : MonoBehaviour
+public class EnemyMovement : MonoBehaviour
 {
     public float yForce;
     public float xForce;
@@ -24,15 +24,24 @@ public class EnemyCollider : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (transform.position.x <= minimumXPosition)
+        if (transform.position.x < minimumXPosition)
         {
             xDirection = 1;
-            enemyRigidBody.AddForce(Vector2.right * xForce);
+            enemyRigidBody.AddForce(Vector2.right * xDirection * 20);
         }
         if (transform.position.x > maximumXPosition)
         {
             xDirection = -1;
-            enemyRigidBody.AddForce(Vector2.left * xForce);
+            enemyRigidBody.AddForce(Vector2.right * xDirection * 20);
+        }
+        enemyRigidBody.AddForce(Vector2.left * xForce* xDirection);
+    }
+
+    void OnCollisionEnter2D (Collision2D collision)
+    {
+        if (collision.gameObject.tag == "ThrowingObject")
+        {
+            Destroy(gameObject);
         }
     }
 }

@@ -7,12 +7,8 @@ public class Throwable : MonoBehaviour
     public GameObject objectThrown;
     public Vector3 offset;
     public int throwableCounter;
-    public Throwable direction;
     // Start is called before the first frame update
-    void Start()
-    {
-        direction = gameObject.FindGameObjectsWithTag("Player").GetComponent<Throwable>();
-    }
+
     void OnCollisionEnter2D (Collision2D collision)
     {
         if (collision.gameObject.tag == "Collectable")
