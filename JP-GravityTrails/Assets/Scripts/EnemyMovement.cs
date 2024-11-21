@@ -26,13 +26,11 @@ public class EnemyMovement : MonoBehaviour
     {
         if (transform.position.x < minimumXPosition)
         {
-            xDirection = 1;
-            enemyRigidBody.AddForce(Vector2.right * xDirection * 20);
+            xDirection = -1;
         }
         if (transform.position.x > maximumXPosition)
         {
-            xDirection = -1;
-            enemyRigidBody.AddForce(Vector2.right * xDirection * 20);
+            xDirection = 1;
         }
         enemyRigidBody.AddForce(Vector2.left * xForce* xDirection);
     }

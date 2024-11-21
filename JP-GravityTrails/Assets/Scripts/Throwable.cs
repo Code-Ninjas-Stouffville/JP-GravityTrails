@@ -20,6 +20,7 @@ public class Throwable : MonoBehaviour
         {
             throwableCounter += 1;
             Destroy(collision.gameObject);
+            collectableCounter.text = throwableCounter.ToString();
         }
     }
 
@@ -36,6 +37,8 @@ public class Throwable : MonoBehaviour
                 GameObject ninjaStar = Instantiate(objectThrown, throwablePosition, transform.rotation);
                 ninjaStar.transform.localScale = new Vector3(1.5f, 1.5f, 1f);
                 throwableCounter -= 1;
+                collectableCounter.text = throwableCounter.ToString();
+
             }
         }
     }
